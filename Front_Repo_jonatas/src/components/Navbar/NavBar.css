@@ -1,3 +1,11 @@
-.Navbar{
-    background-color: wheat;
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5px solid rgb(7, 7, 7);
+  box-shadow: 5px 5px 10px 0px black;
+  background-color: #272722;
+  align-items: center;
+  color: white;
+  padding: 1rem 2rem;
+  width: 100%;
 }
