@@ -2,8 +2,8 @@
 
 ###
 
-<div data-importer="stats" align="center">
-  <source srcset="(https://github-readme-stats.shion.dev/api?username=Stallaiken&theme=dark&hide_border=false&include_all_commits=false&count_private=false)">
+<div align="center">
+  ![align="center"](https://github-readme-stats.shion.dev/api?username=Stallaiken&theme=dark&hide_border=false&include_all_commits=false&count_private=false)
   ![](https://streak-stats.demolab.com/?user=Stallaiken&theme=dark&hide_border=false)
   ![](https://github-readme-stats.shion.dev/api/top-langs/?username=Stallaiken&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 </div>
