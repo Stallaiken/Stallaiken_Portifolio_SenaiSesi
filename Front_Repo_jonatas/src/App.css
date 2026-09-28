@@ -1,4 +1,12 @@
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #0F0F10;
+  background-color: #111111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+
+  background-image: radial-gradient(#686767 1.5px, transparent 1.5px);
+  background-size: 50px 50px;   
 }
+
