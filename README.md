@@ -1,12 +1,7 @@
 <h2 data-importer="text" align="left">Hi 👋! My name is Jonatas and I'm a Jonatas, from Jonatas</h2>
 
 ###
-
-<div align="center">
-  ![align="center"](https://github-readme-stats.shion.dev/api?username=Stallaiken&theme=dark&hide_border=false&include_all_commits=false&count_private=false)
-  ![](https://streak-stats.demolab.com/?user=Stallaiken&theme=dark&hide_border=false)
-  ![](https://github-readme-stats.shion.dev/api/top-langs/?username=Stallaiken&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
-</div>
+<p> Aqui está o meu respositorio de 2026 </p>
 
 ###
 
@@ -40,7 +35,9 @@
 
 <br clear="both">
 
-
+  ![](https://github-readme-stats.shion.dev/api?username=Stallaiken&theme=dark&hide_border=false&include_all_commits=false&count_private=false)
+  ![](https://streak-stats.demolab.com/?user=Stallaiken&theme=dark&hide_border=false)
+  ![](https://github-readme-stats.shion.dev/api/top-langs/?username=Stallaiken&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 
 
 
