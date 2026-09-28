@@ -41,9 +41,9 @@
 <br clear="both">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Stallaiken/Stallaiken/output/snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Stallaiken/Stallaiken/output/snake.svg">
-  <img alt="github contribution snake animation" src="https://raw.githubusercontent.com/Stallaiken/Stallaiken/output/snake.svg">
+![](https://github-readme-stats.shion.dev/api?username=Stallaiken&theme=dark&hide_border=false&include_all_commits=false&count_private=false)<br/>
+![](https://streak-stats.demolab.com/?user=Stallaiken&theme=dark&hide_border=false)<br/>
+![](https://github-readme-stats.shion.dev/api/top-langs/?username=Stallaiken&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 </picture>
 
 ###
