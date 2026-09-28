@@ -1,13 +1,9 @@
-<h2 data-importer="text" align="left">Hi 👋! My name is Jonatas and I'm a Jonatas, from Jonatas</h2>
+# 💫 About Me:
+Esse é o meu Portifolio Digital<br>
 
-###
-<p> Aqui está o meu respositorio de 2026 </p>
 
-###
-
-<img data-importer="image" align="right" height="150" src="https://tenor.com/pt-BR/view/wizard-dance-ena-gif-27696814.gif"  />
-
-###
+# 💻 Habilidades:
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
 <div data-importer="techs" align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" alt="javascript logo"  />
@@ -23,22 +19,11 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" height="30" alt="vscode logo"  />
 </div>
 
-###
+# 📊 GitHub Stats:
+![](https://github-readme-stats.shion.dev/api?username=Stallaiken&theme=dark&hide_border=false&include_all_commits=false&count_private=false)<br/>
+![](https://streak-stats.demolab.com/?user=Stallaiken&theme=dark&hide_border=false)<br/>
+![](https://github-readme-stats.shion.dev/api/top-langs/?username=Stallaiken&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 
-<div data-importer="socials" align="left">
-  <a href="jonatas.stallaiken.dev@gmail.com" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=Gmail&logo=gmail&label=&color=D14836&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="gmail logo"  />
-  </a>
-</div>
+---
+[![](https://komarev.com/ghpvc/?username=Stallaiken&icon=0&color=0)](https://visitcount.itsvg.in)
 
-###
-
-<br clear="both">
-
-  ![](https://github-readme-stats.shion.dev/api?username=Stallaiken&theme=dark&hide_border=false&include_all_commits=false&count_private=false)
-  ![](https://streak-stats.demolab.com/?user=Stallaiken&theme=dark&hide_border=false)
-  ![](https://github-readme-stats.shion.dev/api/top-langs/?username=Stallaiken&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
-
-
-
-###
