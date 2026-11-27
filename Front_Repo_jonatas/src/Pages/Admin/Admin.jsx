@@ -44,7 +44,9 @@ const camposParticipacao = [
 
 const alunoInicial = { nome: "", serie: "", itinerario: "", turma: "" };
 
-const reflexaoInicial = Object.fromEntries(REFLEXOES.map(([campo]) => [campo, ""]));
+const reflexaoInicial = Object.fromEntries(
+  REFLEXOES.map(([campo]) => [campo, ""]),
+);
 
 // Campo de formulário (input ou textarea, conforme "linhas").
 function Campo({ rotulo, valor, onChange, linhas, ...resto }) {
@@ -307,7 +309,6 @@ function Admin() {
     }
   }
 
-  // Bloco de imagens (registros fotográficos) do formulário de registro.
   const blocoImagens = (
     <div className="admin-field">
       {ehSenai ? "Registros fotográficos" : "Imagens"}
@@ -321,7 +322,9 @@ function Admin() {
                 type="button"
                 title="Remover imagem"
                 onClick={() =>
-                  setImagensExistentes((lista) => lista.filter((c) => c !== caminho))
+                  setImagensExistentes((lista) =>
+                    lista.filter((c) => c !== caminho),
+                  )
                 }
               >
                 ×

@@ -4,13 +4,12 @@ import "./Home.css";
 
 function saudacao() {
   const hora = new Date().getHours();
-
+//sou um geinio
   if (hora < 12) return "Bom dia";
   if (hora < 18) return "Boa tarde";
   return "Boa noite";
 }
 
-// Apresentação: saudação à esquerda, atalhos enfileirados à direita.
 function Home() {
   return (
     <section className="home">

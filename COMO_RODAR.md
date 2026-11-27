@@ -5,9 +5,10 @@
 Na raiz do projeto:
 
 ```bash
-npm run install:all   # instala tudo (raiz, back e front)
-npm run seed          # (opcional) cria os dados de src/seed/dados.js no banco
-npm run dev           # sobe back (porta 3000) e front (porta 5173)
+npm run install:all   
+npm run seed         
+
+npm run dev          
 ```
 
 Abra **http://localhost:5173**.

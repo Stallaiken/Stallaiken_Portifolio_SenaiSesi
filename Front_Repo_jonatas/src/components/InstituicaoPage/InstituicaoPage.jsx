@@ -8,29 +8,24 @@ import RegistroBloco from "../RegistroBloco/RegistroBloco.jsx";
 import Estado from "../Estado/Estado.jsx";
 import "./InstituicaoPage.css";
 
-// Página usada tanto pelo SESI quanto pelo SENAI.
-// O SESI tem filtro por bimestre; o SENAI não.
 function InstituicaoPage({ instituicao, titulo, descricao }) {
   const [materiaId, setMateriaId] = useState("");
   const [tipo, setTipo] = useState("");
   const [bimestre, setBimestre] = useState("");
 
-  const { data, loading, error } = useApi(
-    async () => {
-      const [materias, registros] = await Promise.all([
-        api.listarMaterias(instituicao),
-        api.listarRegistros(),
-      ]);
+  const { data, loading, error } = useApi(async () => {
+    const [materias, registros] = await Promise.all([
+      api.listarMaterias(instituicao),
+      api.listarRegistros(),
+    ]);
 
-      return {
-        materias,
-        registros: registros.filter(
-          (registro) => registro.materia?.instituicao === instituicao,
-        ),
-      };
-    },
-    [instituicao],
-  );
+    return {
+      materias,
+      registros: registros.filter(
+        (registro) => registro.materia?.instituicao === instituicao,
+      ),
+    };
+  }, [instituicao]);
 
   const registros = (data?.registros || []).filter(
     (registro) =>
@@ -39,7 +34,6 @@ function InstituicaoPage({ instituicao, titulo, descricao }) {
       (!bimestre || String(registro.bimestre) === String(bimestre)),
   );
 
-  // Filtros extras: só o SESI tem tipo e bimestre. O SENAI usa apenas as abas de matéria.
   const grupos =
     instituicao === "SESI"
       ? [
@@ -49,7 +43,10 @@ function InstituicaoPage({ instituicao, titulo, descricao }) {
             onChange: setTipo,
             opcoes: [
               { valor: "", texto: "Todos" },
-              ...Object.entries(TIPOS).map(([valor, texto]) => ({ valor, texto })),
+              ...Object.entries(TIPOS).map(([valor, texto]) => ({
+                valor,
+                texto,
+              })),
             ],
           },
           {
@@ -84,7 +81,9 @@ function InstituicaoPage({ instituicao, titulo, descricao }) {
               <button
                 type="button"
                 key={materia.id}
-                className={String(materiaId) === String(materia.id) ? "active" : ""}
+                className={
+                  String(materiaId) === String(materia.id) ? "active" : ""
+                }
                 onClick={() => setMateriaId(materia.id)}
               >
                 {materia.nome}

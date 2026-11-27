@@ -4,18 +4,18 @@ import { GRUPOS_REFLEXAO } from "../../utils/rotulos.js";
 import Estado from "../../components/Estado/Estado.jsx";
 import "./QuemSouEu.css";
 
-// Foto do perfil: basta colocar um arquivo chamado "perfil" (jpg, jpeg, png, webp, gif ou avif)
-// na pasta src/assets/. Qualquer tamanho serve: ela é recortada para caber no círculo.
-const fotos = import.meta.glob("../../assets/perfil.{jpg,jpeg,png,webp,gif,avif}", {
-  eager: true,
-  query: "?url",
-  import: "default",
-});
+const fotos = import.meta.glob(
+  "../../assets/perfil.{jpg,jpeg,png,webp,gif,avif}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+);
 const FOTO_PERFIL = Object.values(fotos)[0];
 
 const NOME_PADRAO = "Jonatas Stallaiken Costa Lima Pereira";
 
-// "Cartilha" de apresentação: ficha do aluno e, depois, as reflexões organizadas.
 function QuemSouEu() {
   const { data, loading, error } = useApi(async () => {
     const [alunos, reflexoes, registros] = await Promise.all([
@@ -24,7 +24,11 @@ function QuemSouEu() {
       api.listarRegistros(),
     ]);
 
-    return { aluno: alunos[0] || null, reflexao: reflexoes[0] || null, registros };
+    return {
+      aluno: alunos[0] || null,
+      reflexao: reflexoes[0] || null,
+      registros,
+    };
   });
 
   const aluno = data?.aluno;
@@ -32,8 +36,9 @@ function QuemSouEu() {
   const nome = aluno?.nome || NOME_PADRAO;
 
   const total = (instituicao) =>
-    (data?.registros || []).filter((r) => r.materia?.instituicao === instituicao)
-      .length;
+    (data?.registros || []).filter(
+      (r) => r.materia?.instituicao === instituicao,
+    ).length;
 
   const ficha = [
     ["Série", aluno?.serie],
