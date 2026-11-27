@@ -1,6 +1,5 @@
 const API_URL = import.meta.env.VITE_API_URL || "/api";
 
-// Origem do servidor (usada para montar o endereço das imagens enviadas).
 const API_ORIGIN = new URL(API_URL, window.location.origin).origin;
 
 export function urlImagem(caminho) {
@@ -41,7 +40,8 @@ export const api = {
   // Aluno
   listarAlunos: () => requisicao("/alunos"),
   criarAluno: (dados) => requisicao("/alunos", json("POST", dados)),
-  atualizarAluno: (id, dados) => requisicao(`/alunos/${id}`, json("PUT", dados)),
+  atualizarAluno: (id, dados) =>
+    requisicao(`/alunos/${id}`, json("PUT", dados)),
 
   // Matérias
   listarMaterias: (instituicao = "") =>
