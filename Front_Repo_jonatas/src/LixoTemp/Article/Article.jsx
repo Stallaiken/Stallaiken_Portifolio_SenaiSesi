@@ -1,5 +1,5 @@
 import "./Article.css";
-import NavBar from "../Navbar/NavBar.jsx";
+import NavBar from "../../components/Navbar/NavBar.jsx";
 
 const Article = () => {
   return (

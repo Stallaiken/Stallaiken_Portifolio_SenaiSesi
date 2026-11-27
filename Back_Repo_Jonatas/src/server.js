@@ -1,39 +1,36 @@
+import "dotenv/config";
 
-import 'dotenv/config';
+import fs from "node:fs/promises";
+import path from "node:path";
 
-import fs from 'node:fs/promises';
-import path from 'node:path';
-
-import app from './app.js';
-import { sequelize } from './models/index.js';
+import app from "./app.js";
+import { sequelize } from "./models/index.js";
 
 const PORT = process.env.PORT || 3000;
 
 async function iniciarServidor() {
-    try {
-        // Garante que a pasta do banco exista.
-        await fs.mkdir(path.resolve('database'), {
-            recursive: true
-        });
+  try {
+    // Garante que a pasta do banco exista.
+    await fs.mkdir(path.resolve("database"), {
+      recursive: true,
+    });
 
-        // Testa a conexão.
-        await sequelize.authenticate();
+    // Testa a conexão.
+    await sequelize.authenticate();
 
-        console.log('Banco de dados conectado!');
+    console.log("Banco de dados conectado!");
 
-        // Cria as tabelas que ainda não existem.
-        await sequelize.sync();
+    await sequelize.sync();
 
-        console.log('Tabelas sincronizadas!');
+    console.log("Tabelas sincronizadas!");
 
-        // Inicia o servidor.
-        app.listen(PORT, () => {
-            console.log(`Servidor rodando na porta ${PORT}`);
-        });
-
-    } catch (erro) {
-        console.error('Erro ao iniciar o servidor:', erro);
-    }
+    app.listen(PORT, () => {
+      console.log(`Servidor rodando na porta ${PORT}`);
+    });
+  } catch (erro) {
+    console.error("Erro ao iniciar o servidor:", erro);
+  }
+  F;
 }
 
 iniciarServidor();
