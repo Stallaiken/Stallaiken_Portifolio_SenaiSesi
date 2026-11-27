@@ -30,7 +30,7 @@ async function iniciarServidor() {
   } catch (erro) {
     console.error("Erro ao iniciar o servidor:", erro);
   }
-  F;
+  ;
 }
 
 iniciarServidor();

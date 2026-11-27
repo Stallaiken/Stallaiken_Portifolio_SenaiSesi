@@ -1,0 +1,36 @@
+.inst-cabecalho {
+  margin-bottom: 1.5rem;
+}
+
+.inst-abas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--azul-aco);
+}
+
+.inst-abas button {
+  padding: 0.5rem 1.3rem;
+  border-radius: 8px;
+  border: 1px solid var(--azul-aco);
+  background: var(--azul-escuro);
+  color: var(--text);
+  font-weight: 500;
+}
+
+.inst-abas button:hover {
+  border-color: var(--accent);
+}
+
+.inst-abas button.active {
+  background: var(--azul-aco);
+  border-color: var(--accent);
+}
+
+.inst-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}

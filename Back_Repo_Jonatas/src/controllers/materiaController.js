@@ -15,6 +15,7 @@ async function validarMateria(dados) {
 
 const materiaController = criarCrud(Materia, ["nome", "instituicao"], {
   filtros: ["instituicao"],
+  order: [["nome", "ASC"]],
   validar: validarMateria,
 });
 

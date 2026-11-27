@@ -1,3 +1,6 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+
 import { Registro, Materia } from "../models/index.js";
 
 import criarCrud from "./crudController.js";
@@ -19,7 +22,7 @@ async function validarRegistro(dados) {
     throw new Error("Matéria não encontrada.");
   }
 
-  // Valida os campos de acordo com o tipo.
+
   if (dados.tipo === "conteudo" && !dados.resumo_teorico?.trim()) {
     throw new Error("O resumo teórico é obrigatório.");
   }
@@ -44,7 +47,7 @@ async function validarRegistro(dados) {
     throw new Error("A descrição do projeto é obrigatória.");
   }
 
-  // Valida o bimestre de acordo com a instituição.
+
   if (materia.instituicao === "SESI") {
     const bimestre = Number(dados.bimestre);
 
@@ -66,7 +69,7 @@ async function validarRegistro(dados) {
   }
 }
 
-const registroController = criarCrud(
+const crudRegistro = criarCrud(
   Registro,
   [
     "titulo",
@@ -84,9 +87,28 @@ const registroController = criarCrud(
   ],
   {
     filtros: ["materiaId", "tipo", "bimestre"],
-    include: [{ model: Materia }],
+    include: [{ model: Materia, as: "materia" }],
+    order: [["createdAt", "DESC"]],
     validar: validarRegistro,
   },
 );
+
+
+async function excluir(req, res) {
+  try {
+    const registro = await Registro.findByPk(req.params.id);
+
+    if (registro?.imagem) {
+      const arquivo = path.resolve("uploads", path.basename(registro.imagem));
+      await fs.unlink(arquivo).catch(() => {});
+    }
+  } catch {
+    // Se falhar, segue para a exclusão normal.
+  }
+
+  return crudRegistro.excluir(req, res);
+}
+
+const registroController = { ...crudRegistro, excluir };
 
 export default registroController;

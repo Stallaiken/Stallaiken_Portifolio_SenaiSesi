@@ -1,12 +1,13 @@
 {
   "name": "back_repo_jonatas",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "API do portfólio escolar (Express + Sequelize + SQLite)",
+  "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-  "dev": "nodemon src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node src/seed.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "cors": "^2.8.6",
     "dotenv": "^18.0.10",
     "express": "^5.3.0",
+    "multer": "^2.5.0",
     "sequelize": "^6.37.8",
     "sqlite3": "^6.0.1"
   },

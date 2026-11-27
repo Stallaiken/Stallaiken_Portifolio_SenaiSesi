@@ -1,0 +1,69 @@
+.quem {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.quem-perfil {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--azul-aco);
+}
+
+.quem-avatar {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  background: var(--azul-aco);
+  border: 2px solid var(--accent);
+  font-family: var(--font-title);
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.quem-dados {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+}
+
+.quem-dados dt {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.quem-dados dd {
+  font-weight: 500;
+}
+
+.quem-reflexao {
+  background: var(--azul-escuro);
+  border: 1px solid var(--azul-aco);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+
+.quem-reflexao h2 {
+  font-size: 1rem;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.quem-reflexao p {
+  white-space: pre-line;
+}
+
+@media (max-width: 600px) {
+  .quem-perfil {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -5,7 +5,9 @@ import Materia from "./Materia.js";
 import Registro from "./Registro.js";
 import Reflexao from "./Reflexao.js";
 
+
 Materia.hasMany(Registro, {
+  as: "registros",
   foreignKey: {
     name: "materiaId",
     allowNull: false,
@@ -14,6 +16,7 @@ Materia.hasMany(Registro, {
 });
 
 Registro.belongsTo(Materia, {
+  as: "materia",
   foreignKey: "materiaId",
 });
 

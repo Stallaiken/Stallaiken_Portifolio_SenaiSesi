@@ -1,0 +1,33 @@
+:root {
+  /* Paleta (sólida, sem degradês) */
+  --preto: #080b12;
+  --azul-preto: #101827;
+  --azul-escuro: #17263d;
+  --azul-aco: #243b5a;
+  --azul-destaque: #4c83b6;
+  --texto: #dce8f5;
+
+  --bg: var(--preto);
+  --bg-soft: var(--azul-preto);
+  --surface: var(--azul-escuro);
+  --border: var(--azul-aco);
+  --accent: var(--azul-destaque);
+  --text: var(--texto);
+  --text-muted: #9db0c6;
+
+  /* Nomes usados pelo painel admin */
+  --surface-2: var(--azul-escuro);
+  --navy: var(--azul-aco);
+  --blue: var(--azul-aco);
+  --blue-bright: var(--azul-destaque);
+  --blue-text: var(--azul-destaque);
+  --border-strong: var(--azul-destaque);
+
+  --success: #5bd49a;
+  --danger: #ff7a85;
+
+  --radius: 14px;
+
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-title: "Space Grotesk", "Inter", system-ui, sans-serif;
+}

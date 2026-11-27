@@ -25,6 +25,7 @@ function criarCrud(Model, camposPermitidos, opcoes = {}) {
         const registros = await Model.findAll({
           where,
           include: opcoes.include || [],
+          order: opcoes.order || [["id", "ASC"]],
         });
 
         return res.json(registros);
