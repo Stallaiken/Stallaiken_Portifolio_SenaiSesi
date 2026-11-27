@@ -2,7 +2,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { Registro, Materia } from "../models/index.js";
+import { Registro, Materia, Imagem } from "../models/index.js";
+import { lerLista, listaImagens } from "../utils/imagens.js";
 
 import criarCrud from "./crudController.js";
 
@@ -31,23 +32,6 @@ const CAMPOS_LEGADOS = [
   "exemplo_aprendizado",
   "aplicacao_cotidiano",
 ];
-
-// Imagens do registro: lista nova (JSON) + campo antigo "imagem".
-function listaImagens(registro) {
-  let lista = [];
-
-  try {
-    lista = JSON.parse(registro.imagens || "[]");
-  } catch {
-    lista = [];
-  }
-
-  if (registro.imagem && !lista.includes(registro.imagem)) {
-    lista.unshift(registro.imagem);
-  }
-
-  return lista;
-}
 
 async function validarRegistro(dados) {
   if (!dados.titulo?.trim()) {
@@ -153,13 +137,18 @@ const crudRegistro = criarCrud(
   },
 );
 
-// Apaga o arquivo da imagem (se existir) quando o registro é excluído.
+// Ao excluir o registro, apaga também as imagens dele.
 async function excluir(req, res) {
   try {
     const registro = await Registro.findByPk(req.params.id);
 
-    if (registro) {
-      for (const caminho of listaImagens(registro)) {
+    for (const caminho of registro ? listaImagens(registro) : []) {
+      const dentroDoBanco = caminho.match(/^\/api\/imagens\/(\d+)$/);
+
+      if (dentroDoBanco) {
+        await Imagem.destroy({ where: { id: dentroDoBanco[1] } });
+      } else {
+        // Imagem do formato antigo (arquivo na pasta uploads).
         const arquivo = path.join(pastaUploads, path.basename(caminho));
         await fs.unlink(arquivo).catch(() => {});
       }
@@ -171,28 +160,36 @@ async function excluir(req, res) {
   return crudRegistro.excluir(req, res);
 }
 
-// Monta a lista de imagens a partir das que foram mantidas
-// (campo "imagens_existentes") + as novas enviadas (campo "imagens").
-export function prepararImagens(req, res, next) {
-  const novas = (req.files || []).map((arq) => `/uploads/${arq.filename}`);
-  const enviouLista = req.body.imagens_existentes !== undefined;
-
-  if (novas.length === 0 && !enviouLista) {
-    return next();
-  }
-
-  let mantidas = [];
-
+// Grava as imagens novas no banco e monta a lista final do registro:
+// imagens mantidas (campo "imagens_existentes") + imagens novas (campo "imagens").
+export async function prepararImagens(req, res, next) {
   try {
-    mantidas = JSON.parse(req.body.imagens_existentes || "[]");
-  } catch {
-    mantidas = [];
+    const arquivos = req.files || [];
+
+    if (arquivos.length === 0 && req.body.imagens_existentes === undefined) {
+      return next();
+    }
+
+    const novas = [];
+
+    for (const arquivo of arquivos) {
+      const imagem = await Imagem.create({
+        mime: arquivo.mimetype,
+        dados: arquivo.buffer,
+      });
+
+      novas.push(`/api/imagens/${imagem.id}`);
+    }
+
+    const mantidas = lerLista(req.body.imagens_existentes);
+
+    req.body.imagens = JSON.stringify([...mantidas, ...novas]);
+    req.body.imagem = null; // o campo antigo passa a ser coberto pela lista
+
+    return next();
+  } catch (erro) {
+    return next(erro);
   }
-
-  req.body.imagens = JSON.stringify([...mantidas, ...novas]);
-  req.body.imagem = null; // o campo antigo passa a ser coberto pela lista
-
-  return next();
 }
 
 const registroController = { ...crudRegistro, excluir };

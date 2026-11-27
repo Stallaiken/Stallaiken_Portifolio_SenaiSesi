@@ -4,6 +4,15 @@ import { GRUPOS_REFLEXAO } from "../../utils/rotulos.js";
 import Estado from "../../components/Estado/Estado.jsx";
 import "./QuemSouEu.css";
 
+// Foto do perfil: basta colocar um arquivo chamado "perfil" (jpg, jpeg, png, webp, gif ou avif)
+// na pasta src/assets/. Qualquer tamanho serve: ela é recortada para caber no círculo.
+const fotos = import.meta.glob("../../assets/perfil.{jpg,jpeg,png,webp,gif,avif}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+const FOTO_PERFIL = Object.values(fotos)[0];
+
 const NOME_PADRAO = "Jonatas Stallaiken Costa Lima Pereira";
 
 // "Cartilha" de apresentação: ficha do aluno e, depois, as reflexões organizadas.
@@ -43,7 +52,9 @@ function QuemSouEu() {
     <section className="quem">
       <article className="quem-cartilha">
         <div className="quem-topo">
-          <div className="quem-avatar">{nome[0]}</div>
+          <div className="quem-avatar">
+            {FOTO_PERFIL ? <img src={FOTO_PERFIL} alt={nome} /> : nome[0]}
+          </div>
 
           <div>
             <span className="eyebrow">Ficha do aluno</span>

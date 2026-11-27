@@ -5,7 +5,7 @@ import path from "node:path";
 
 import app from "./app.js";
 import { sequelize } from "./models/index.js";
-import migrar from "./config/migrar.js";
+import migrar, { importarUploads } from "./config/migrar.js";
 
 const PORT = process.env.PORT || 3000;
 
@@ -23,6 +23,7 @@ async function iniciarServidor() {
 
     await sequelize.sync();
     await migrar();
+    await importarUploads();
 
     console.log("Tabelas sincronizadas!");
 

@@ -1,4 +1,4 @@
-
+// Mensagem padrão para carregando / erro / lista vazia.
 function Estado({ tipo = "vazio", children }) {
   if (tipo === "carregando") {
     return <div className="estado">Carregando…</div>;

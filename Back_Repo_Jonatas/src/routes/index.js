@@ -4,6 +4,7 @@ import aluno from "../controllers/AlunoController.js";
 import materia from "../controllers/materiaController.js";
 import registro, { prepararImagens } from "../controllers/registroController.js";
 import reflexao from "../controllers/reflexaoController.js";
+import { mostrar as mostrarImagem } from "../controllers/imagemController.js";
 import upload from "../middlewares/upload.js";
 
 const router = express.Router();
@@ -22,6 +23,8 @@ registrarRotas("reflexoes", reflexao);
 
 // Registros aceitam várias imagens (campo "imagens").
 const enviarImagens = upload.array("imagens", 12);
+
+router.get("/imagens/:id", mostrarImagem);
 
 router.get("/registros", registro.listar);
 router.get("/registros/:id", registro.buscar);

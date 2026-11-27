@@ -1,0 +1,14 @@
+{
+  "name": "portfolio-stallaiken",
+  "private": true,
+  "description": "Portfólio escolar (SESI/SENAI): React + Vite no front, Express + SQLite no back",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix Back_Repo_Jonatas && npm install --prefix Front_Repo_jonatas",
+    "seed": "npm run seed --prefix Back_Repo_Jonatas",
+    "dev": "concurrently -n back,front -c blue,cyan \"npm run dev --prefix Back_Repo_Jonatas\" \"npm run dev --prefix Front_Repo_jonatas\"",
+    "seed:reset": "npm run seed:reset --prefix Back_Repo_Jonatas"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

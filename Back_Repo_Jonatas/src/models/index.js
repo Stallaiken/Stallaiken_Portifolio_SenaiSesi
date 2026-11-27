@@ -4,6 +4,7 @@ import Aluno from "./Aluno.js";
 import Materia from "./Materia.js";
 import Registro from "./Registro.js";
 import Reflexao from "./Reflexao.js";
+import Imagem from "./Imagem.js";
 
 // Uma matéria possui vários registros.
 // O alias "materia" faz o JSON vir como { ..., materia: { id, nome, instituicao } }.
@@ -21,4 +22,4 @@ Registro.belongsTo(Materia, {
   foreignKey: "materiaId",
 });
 
-export { sequelize, Aluno, Materia, Registro, Reflexao };
+export { sequelize, Aluno, Materia, Registro, Reflexao, Imagem };

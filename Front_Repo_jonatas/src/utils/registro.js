@@ -43,7 +43,8 @@ export function listaImagens(registro) {
   let lista = [];
 
   try {
-    lista = JSON.parse(registro.imagens || "[]");
+    const lido = JSON.parse(registro.imagens || "[]");
+    lista = Array.isArray(lido) ? lido : [];
   } catch {
     lista = [];
   }
