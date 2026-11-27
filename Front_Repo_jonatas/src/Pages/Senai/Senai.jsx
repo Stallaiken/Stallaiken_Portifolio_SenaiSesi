@@ -5,7 +5,7 @@ function Senai() {
     <InstituicaoPage
       instituicao="SENAI"
       titulo="Portfólio SENAI"
-      descricao="Registros e projetos da formação técnica, com o que aprendi e como apliquei na prática."
+      descricao="Atividades da formação técnica: projetos, códigos, registros, relatórios, aprendizagens e competências."
     />
   );
 }

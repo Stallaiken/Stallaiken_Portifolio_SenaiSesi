@@ -277,3 +277,38 @@
     flex-direction: column;
   }
 }
+
+/* Imagens já salvas no registro */
+.admin-imagens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.admin-imagem {
+  position: relative;
+  width: 6rem;
+  height: 4.5rem;
+}
+
+.admin-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--azul-aco);
+}
+
+.admin-imagem button {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 1.4rem;
+  height: 1.4rem;
+  line-height: 1;
+  border: 0;
+  border-radius: 50%;
+  background: var(--danger);
+  color: var(--preto);
+  font-weight: 700;
+}

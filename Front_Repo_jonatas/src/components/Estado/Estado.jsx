@@ -1,4 +1,4 @@
-//Função de carregamento e caso esqueça de iniciar o banco de dados
+
 function Estado({ tipo = "vazio", children }) {
   if (tipo === "carregando") {
     return <div className="estado">Carregando…</div>;
@@ -8,9 +8,7 @@ function Estado({ tipo = "vazio", children }) {
     return (
       <div className="estado erro">
         {children}
-        <small>
-          Confira se o back-end está rodando (npm run dev em Back_Repo_Jonatas).
-        </small>
+        <small>Confira se o back-end está rodando (npm run dev em Back_Repo_Jonatas).</small>
       </div>
     );
   }

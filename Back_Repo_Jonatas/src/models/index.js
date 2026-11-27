@@ -5,7 +5,8 @@ import Materia from "./Materia.js";
 import Registro from "./Registro.js";
 import Reflexao from "./Reflexao.js";
 
-
+// Uma matéria possui vários registros.
+// O alias "materia" faz o JSON vir como { ..., materia: { id, nome, instituicao } }.
 Materia.hasMany(Registro, {
   as: "registros",
   foreignKey: {

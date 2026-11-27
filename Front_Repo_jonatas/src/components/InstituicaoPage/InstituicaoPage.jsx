@@ -8,25 +8,29 @@ import RegistroBloco from "../RegistroBloco/RegistroBloco.jsx";
 import Estado from "../Estado/Estado.jsx";
 import "./InstituicaoPage.css";
 
-// O SESI tem filtro por bimestre; o SENAI não, lembrar de colocar isso
+// Página usada tanto pelo SESI quanto pelo SENAI.
+// O SESI tem filtro por bimestre; o SENAI não.
 function InstituicaoPage({ instituicao, titulo, descricao }) {
   const [materiaId, setMateriaId] = useState("");
   const [tipo, setTipo] = useState("");
   const [bimestre, setBimestre] = useState("");
 
-  const { data, loading, error } = useApi(async () => {
-    const [materias, registros] = await Promise.all([
-      api.listarMaterias(instituicao),
-      api.listarRegistros(),
-    ]);
+  const { data, loading, error } = useApi(
+    async () => {
+      const [materias, registros] = await Promise.all([
+        api.listarMaterias(instituicao),
+        api.listarRegistros(),
+      ]);
 
-    return {
-      materias,
-      registros: registros.filter(
-        (registro) => registro.materia?.instituicao === instituicao,
-      ),
-    };
-  }, [instituicao]);
+      return {
+        materias,
+        registros: registros.filter(
+          (registro) => registro.materia?.instituicao === instituicao,
+        ),
+      };
+    },
+    [instituicao],
+  );
 
   const registros = (data?.registros || []).filter(
     (registro) =>
@@ -35,29 +39,30 @@ function InstituicaoPage({ instituicao, titulo, descricao }) {
       (!bimestre || String(registro.bimestre) === String(bimestre)),
   );
 
-  const grupos = [
-    {
-      titulo: "Tipo",
-      valor: tipo,
-      onChange: setTipo,
-      opcoes: [
-        { valor: "", texto: "Todos" },
-        ...Object.entries(TIPOS).map(([valor, texto]) => ({ valor, texto })),
-      ],
-    },
-  ];
-
-  if (instituicao === "SESI") {
-    grupos.push({
-      titulo: "Bimestre",
-      valor: bimestre,
-      onChange: setBimestre,
-      opcoes: [
-        { valor: "", texto: "Todos" },
-        ...[1, 2, 3, 4].map((n) => ({ valor: n, texto: `${n}º` })),
-      ],
-    });
-  }
+  // Filtros extras: só o SESI tem tipo e bimestre. O SENAI usa apenas as abas de matéria.
+  const grupos =
+    instituicao === "SESI"
+      ? [
+          {
+            titulo: "Tipo",
+            valor: tipo,
+            onChange: setTipo,
+            opcoes: [
+              { valor: "", texto: "Todos" },
+              ...Object.entries(TIPOS).map(([valor, texto]) => ({ valor, texto })),
+            ],
+          },
+          {
+            titulo: "Bimestre",
+            valor: bimestre,
+            onChange: setBimestre,
+            opcoes: [
+              { valor: "", texto: "Todos" },
+              ...[1, 2, 3, 4].map((n) => ({ valor: n, texto: `${n}º` })),
+            ],
+          },
+        ]
+      : [];
 
   const materias = data?.materias || [];
 
@@ -79,9 +84,7 @@ function InstituicaoPage({ instituicao, titulo, descricao }) {
               <button
                 type="button"
                 key={materia.id}
-                className={
-                  String(materiaId) === String(materia.id) ? "active" : ""
-                }
+                className={String(materiaId) === String(materia.id) ? "active" : ""}
                 onClick={() => setMateriaId(materia.id)}
               >
                 {materia.nome}
@@ -89,7 +92,7 @@ function InstituicaoPage({ instituicao, titulo, descricao }) {
             ))}
           </div>
 
-          <FilterBar grupos={grupos} />
+          {grupos.length > 0 && <FilterBar grupos={grupos} />}
 
           {registros.length === 0 ? (
             <Estado>Nenhum registro encontrado.</Estado>

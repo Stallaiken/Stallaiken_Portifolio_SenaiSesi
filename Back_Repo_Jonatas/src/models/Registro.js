@@ -12,7 +12,7 @@ const Registro = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isIn: [["conteudo", "participacao", "projeto"]],
+        isIn: [["conteudo", "participacao", "projeto", "atividade"]],
       },
     },
     descricao: {
@@ -47,6 +47,15 @@ const Registro = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    // ----- Campos do SENAI -----
+    projetos_desenvolvidos: { type: DataTypes.TEXT, allowNull: true },
+    codigos_produzidos: { type: DataTypes.TEXT, allowNull: true },
+    videos: { type: DataTypes.TEXT, allowNull: true }, // links, um por linha
+    relatorios_tecnicos: { type: DataTypes.TEXT, allowNull: true },
+    aprendizagens_construidas: { type: DataTypes.TEXT, allowNull: true },
+    competencias_desenvolvidas: { type: DataTypes.TEXT, allowNull: true },
+    // Lista de imagens (JSON). O campo antigo "imagem" continua sendo lido.
+    imagens: { type: DataTypes.TEXT, allowNull: true },
     bimestre: {
       type: DataTypes.INTEGER,
       allowNull: true,

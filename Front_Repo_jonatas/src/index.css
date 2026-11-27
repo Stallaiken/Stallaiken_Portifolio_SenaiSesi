@@ -14,8 +14,8 @@ body {
   line-height: 1.6;
   background-color: var(--bg);
   /* fundo pontilhado */
-  background-image: radial-gradient(var(--azul-escuro) 1.5px, transparent 1.5px);
-  background-size: 26px 26px;
+  background-image: radial-gradient(var(--azul-aco) 1.5px, transparent 1.6px);
+  background-size: 24px 24px;
 }
 
 h1,

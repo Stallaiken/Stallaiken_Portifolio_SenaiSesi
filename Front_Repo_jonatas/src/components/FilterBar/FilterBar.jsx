@@ -1,5 +1,6 @@
 import "./FilterBar.css";
 
+// Grupo de botões "pílula". Cada opção: { valor, texto }.
 function Grupo({ titulo, opcoes, valor, onChange }) {
   return (
     <div className="filter-group">

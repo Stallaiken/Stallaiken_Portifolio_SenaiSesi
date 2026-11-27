@@ -4,10 +4,12 @@ import "dotenv/config";
 import fs from "node:fs/promises";
 import path from "node:path";
 
+import migrar from "./config/migrar.js";
 import { sequelize, Aluno, Materia, Registro, Reflexao } from "./models/index.js";
 
 await fs.mkdir(path.resolve("database"), { recursive: true });
 await sequelize.sync();
+await migrar();
 
 if ((await Materia.count()) > 0) {
   console.log("O banco já tem dados. Nada foi alterado.");
@@ -47,9 +49,13 @@ await Registro.bulkCreate([
   },
   {
     titulo: "Calculadora em JavaScript (exemplo)",
-    tipo: "projeto",
-    descricao:
-      "Texto de exemplo: projeto prático em que construí uma calculadora usando HTML, CSS e JavaScript, aplicando funções e condicionais.",
+    tipo: "atividade",
+    projetos_desenvolvidos: "Texto de exemplo: calculadora feita com HTML, CSS e JavaScript.",
+    codigos_produzidos: "function somar(a, b) {\n  return a + b;\n}",
+    relatorios_tecnicos: "Texto de exemplo: relatório com as etapas, testes e resultados.",
+    aprendizagens_construidas: "Texto de exemplo: funções, condicionais e eventos do DOM.",
+    competencias_desenvolvidas: "Texto de exemplo: lógica, organização e resolução de problemas.",
+    autoavaliacao: "Texto de exemplo: entreguei no prazo e quero melhorar os testes.",
     materiaId: logica.id,
   },
 ]);

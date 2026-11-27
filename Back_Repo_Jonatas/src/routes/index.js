@@ -2,7 +2,7 @@ import express from "express";
 
 import aluno from "../controllers/AlunoController.js";
 import materia from "../controllers/materiaController.js";
-import registro from "../controllers/registroController.js";
+import registro, { prepararImagens } from "../controllers/registroController.js";
 import reflexao from "../controllers/reflexaoController.js";
 import upload from "../middlewares/upload.js";
 
@@ -20,24 +20,13 @@ registrarRotas("alunos", aluno);
 registrarRotas("materias", materia);
 registrarRotas("reflexoes", reflexao);
 
-// Registros aceitam upload de imagem (campo "imagem").
-function anexarImagem(req, res, next) {
-  if (req.file) {
-    req.body.imagem = `/uploads/${req.file.filename}`;
-  }
-
-  next();
-}
+// Registros aceitam várias imagens (campo "imagens").
+const enviarImagens = upload.array("imagens", 12);
 
 router.get("/registros", registro.listar);
 router.get("/registros/:id", registro.buscar);
-router.post("/registros", upload.single("imagem"), anexarImagem, registro.criar);
-router.put(
-  "/registros/:id",
-  upload.single("imagem"),
-  anexarImagem,
-  registro.atualizar,
-);
+router.post("/registros", enviarImagens, prepararImagens, registro.criar);
+router.put("/registros/:id", enviarImagens, prepararImagens, registro.atualizar);
 router.delete("/registros/:id", registro.excluir);
 
 export default router;

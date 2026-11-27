@@ -5,6 +5,7 @@ import path from "node:path";
 
 import app from "./app.js";
 import { sequelize } from "./models/index.js";
+import migrar from "./config/migrar.js";
 
 const PORT = process.env.PORT || 3000;
 
@@ -21,6 +22,7 @@ async function iniciarServidor() {
     console.log("Banco de dados conectado!");
 
     await sequelize.sync();
+    await migrar();
 
     console.log("Tabelas sincronizadas!");
 

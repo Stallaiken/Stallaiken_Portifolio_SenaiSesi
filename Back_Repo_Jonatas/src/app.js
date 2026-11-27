@@ -23,7 +23,8 @@ app.get("/", (req, res) => {
   });
 });
 
-
+// Erros (ex.: upload de arquivo inválido) sempre em JSON.
+// eslint-disable-next-line no-unused-vars
 app.use((erro, req, res, next) => {
   res.status(400).json({ erro: erro.message || "Erro na requisição." });
 });

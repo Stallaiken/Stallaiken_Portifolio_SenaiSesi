@@ -10,16 +10,18 @@ function saudacao() {
   return "Boa noite";
 }
 
-// Apresentação: só dá as boas-vindas e leva para as outras páginas.
+// Apresentação: saudação à esquerda, atalhos enfileirados à direita.
 function Home() {
   return (
     <section className="home">
-      <span className="eyebrow">Portfólio SESI · SENAI</span>
-      <h1>{saudacao()}!</h1>
-      <p>
-        Aqui está o meu portfólio digital: o que estudei, participei e
-        desenvolvi no SESI e no SENAI.
-      </p>
+      <div className="home-texto">
+        <span className="eyebrow">Portfólio SESI · SENAI</span>
+        <h1>{saudacao()}!</h1>
+        <p>
+          Aqui está o meu portfólio digital: o que estudei, participei e
+          desenvolvi no SESI e no SENAI.
+        </p>
+      </div>
 
       <div className="home-links">
         <Link to="/quem-sou-eu" className="btn btn-primary">
